@@ -1,0 +1,65 @@
+[
+  {
+    "name": "ubuntu-24-04-test",
+    "instance_type": "t3.micro",
+    "image_id": "ami-0ae8595e2aff47037",
+    "user_data": "#!/bin/bash\necho 'Hello from Ubuntu 24.04 LTS!'",
+    "tags": {
+      "Environment": "Development",
+      "Project": "Test",
+      "OS": "Ubuntu 24.04 LTS"
+    },
+    "volume_size": 8,
+    "volume_type": "gp3"
+  },
+  {
+    "name": "ubuntu-24-04-spot",
+    "instance_type": "t3.micro",
+    "image_id": "ami-0ae8595e2aff47037",
+    "spot_instance": true,
+    "user_data": "#!/bin/bash\necho 'Hello from Ubuntu 24.04 LTS Spot Instance!'",
+    "tags": {
+      "Environment": "Development",
+      "Project": "Test",
+      "OS": "Ubuntu 24.04 LTS",
+      "InstanceType": "Spot"
+    },
+    "volume_size": 8,
+    "volume_type": "gp3"
+  },
+  {
+    "name": "ubuntu-24-04-spot-budget",
+    "instance_type": "t3.micro",
+    "image_id": "ami-0ae8595e2aff47037",
+    "spot_instance": true,
+    "spot_max_price": "0.005",
+    "user_data": "#!/bin/bash\necho 'Hello from Budget Spot Instance!'",
+    "tags": {
+      "Environment": "Development",
+      "Project": "Test",
+      "OS": "Ubuntu 24.04 LTS",
+      "InstanceType": "Spot",
+      "Budget": "0.5c/hour"
+    },
+    "volume_size": 8,
+    "volume_type": "gp3"
+  },
+  {
+    "name": "ubuntu-24-04-spot-resilient",
+    "instance_type": "t3.micro",
+    "image_id": "ami-0ae8595e2aff47037",
+    "spot_instance": true,
+    "spot_max_retries": 5,
+    "spot_retry_delay": 60,
+    "user_data": "#!/bin/bash\necho 'Hello from Resilient Spot Instance!'",
+    "tags": {
+      "Environment": "Development",
+      "Project": "Test",
+      "OS": "Ubuntu 24.04 LTS",
+      "InstanceType": "Spot",
+      "Resilience": "High"
+    },
+    "volume_size": 8,
+    "volume_type": "gp3"
+  }
+]

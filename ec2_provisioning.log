@@ -1,0 +1,176 @@
+2025-08-13 21:11:48,306 - ERROR - Failed to validate AWS credentials: Unable to locate credentials
+2025-08-13 21:26:30,444 - INFO - AWS credentials validated successfully
+2025-08-13 21:26:30,445 - INFO - Starting parallel provisioning of 1 instances
+2025-08-13 21:26:30,446 - INFO - Starting provisioning for instance: ubuntu-test-1
+2025-08-13 21:26:30,738 - ERROR - Failed to provision instance ubuntu-test-1: An error occurred (InvalidAMIID.NotFound) when calling the RunInstances operation: The image id '[ami-0c7217cd9b2890ac1]' does not exist
+2025-08-13 21:26:30,739 - ERROR - Instance ubuntu-test-1 failed: An error occurred (InvalidAMIID.NotFound) when calling the RunInstances operation: The image id '[ami-0c7217cd9b2890ac1]' does not exist
+2025-08-13 21:26:30,739 - INFO - Provisioning completed. Successful: 0, Failed: 1
+2025-08-13 21:28:24,579 - INFO - AWS credentials validated successfully
+2025-08-13 21:28:24,579 - INFO - Starting parallel provisioning of 1 instances
+2025-08-13 21:28:24,580 - INFO - Starting provisioning for instance: ubuntu-24-04-test
+2025-08-13 21:28:25,887 - INFO - Waiting for instance i-0b4271e7747614d01 to be running...
+2025-08-13 21:28:42,316 - INFO - Successfully provisioned instance ubuntu-24-04-test (i-0b4271e7747614d01)
+2025-08-13 21:28:42,316 - INFO - Instance ubuntu-24-04-test completed successfully
+2025-08-13 21:28:42,317 - INFO - Provisioning completed. Successful: 1, Failed: 0
+2025-08-13 21:29:21,424 - INFO - AWS credentials validated successfully
+2025-08-13 21:29:21,425 - INFO - Starting parallel provisioning of 1 instances
+2025-08-13 21:29:21,425 - INFO - Starting provisioning for instance: ubuntu-24-04-test
+2025-08-13 21:29:22,727 - INFO - Waiting for instance i-0c173c8b68e9407db to be running...
+2025-08-13 21:29:39,165 - INFO - Successfully provisioned instance ubuntu-24-04-test (i-0c173c8b68e9407db)
+2025-08-13 21:29:39,166 - INFO - Instance ubuntu-24-04-test completed successfully
+2025-08-13 21:29:39,166 - INFO - Provisioning completed. Successful: 1, Failed: 0
+2025-08-13 21:29:39,167 - INFO - Starting cleanup of 1 instances
+2025-08-13 21:29:39,167 - INFO - Terminating instance: i-0c173c8b68e9407db
+2025-08-13 21:32:53,951 - INFO - AWS credentials validated successfully
+2025-08-13 21:32:53,952 - INFO - Starting parallel provisioning of 1 instances
+2025-08-13 21:32:53,952 - INFO - Starting provisioning for instance: ubuntu-24-04-test
+2025-08-13 21:32:55,263 - INFO - Waiting for instance i-0b53c03edfd2d15c3 to be running...
+2025-08-13 21:33:11,720 - INFO - Successfully provisioned instance ubuntu-24-04-test (i-0b53c03edfd2d15c3)
+2025-08-13 21:33:11,722 - INFO - Instance ubuntu-24-04-test completed successfully
+2025-08-13 21:33:11,722 - INFO - Provisioning completed. Successful: 1, Failed: 0
+2025-08-13 21:33:11,723 - INFO - Starting cleanup of 1 instances
+2025-08-13 21:33:11,723 - INFO - Terminating instance: i-0b53c03edfd2d15c3
+2025-08-13 21:34:18,092 - INFO - AWS credentials validated successfully
+2025-08-13 21:34:18,094 - INFO - Starting cleanup of 1 instances
+2025-08-13 21:34:18,094 - INFO - Terminating instance: i-0b53c03edfd2d15c3
+2025-08-13 21:35:36,270 - INFO - AWS credentials validated successfully
+2025-08-13 21:35:36,625 - INFO - Found 4 instances to clean up
+2025-08-13 21:35:36,625 - INFO - Starting cleanup of 4 instances
+2025-08-13 21:35:36,626 - INFO - Terminating instance: i-0d150a07c349f380c
+2025-08-13 21:35:36,628 - INFO - Terminating instance: i-0260db818b4731d88
+2025-08-13 21:35:36,631 - INFO - Terminating instance: i-06aa36e3282e20c80
+2025-08-13 21:35:36,631 - INFO - Terminating instance: i-0b4271e7747614d01
+2025-08-13 21:47:36,662 - INFO - AWS credentials validated successfully
+2025-08-13 21:47:36,663 - INFO - Starting parallel provisioning of 4 instances
+2025-08-13 21:47:36,664 - INFO - Starting provisioning for instance: ubuntu-24-04-test
+2025-08-13 21:47:36,667 - INFO - Starting provisioning for instance: ubuntu-24-04-spot
+2025-08-13 21:47:36,668 - INFO - Spot instance attempt 1/3 for ubuntu-24-04-spot
+2025-08-13 21:47:36,668 - INFO - Starting provisioning for instance: ubuntu-24-04-spot-budget
+2025-08-13 21:47:36,668 - INFO - No max price specified - AWS will use current on-demand price
+2025-08-13 21:47:36,668 - INFO - Starting provisioning for instance: ubuntu-24-04-spot-resilient
+2025-08-13 21:47:36,669 - INFO - Spot instance attempt 1/3 for ubuntu-24-04-spot-budget
+2025-08-13 21:47:36,669 - INFO - Requesting spot instance for ubuntu-24-04-spot...
+2025-08-13 21:47:36,669 - INFO - Spot instance attempt 1/5 for ubuntu-24-04-spot-resilient
+2025-08-13 21:47:36,669 - INFO - Setting spot max price to: 0.005
+2025-08-13 21:47:36,670 - WARNING - Spot instance attempt 1 failed for ubuntu-24-04-spot: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "MinCount", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+Unknown parameter in LaunchSpecification: "MaxCount", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:47:36,670 - INFO - No max price specified - AWS will use current on-demand price
+2025-08-13 21:47:36,670 - INFO - Requesting spot instance for ubuntu-24-04-spot-budget...
+2025-08-13 21:47:36,670 - INFO - Waiting 30 seconds before retry...
+2025-08-13 21:47:36,670 - INFO - Requesting spot instance for ubuntu-24-04-spot-resilient...
+2025-08-13 21:47:36,671 - WARNING - Spot instance attempt 1 failed for ubuntu-24-04-spot-budget: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "MinCount", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+Unknown parameter in LaunchSpecification: "MaxCount", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:47:36,671 - WARNING - Spot instance attempt 1 failed for ubuntu-24-04-spot-resilient: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "MinCount", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+Unknown parameter in LaunchSpecification: "MaxCount", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:47:36,671 - INFO - Waiting 30 seconds before retry...
+2025-08-13 21:47:36,671 - INFO - Waiting 60 seconds before retry...
+2025-08-13 21:47:37,989 - INFO - Waiting for instance i-040c24520551ad194 to be running...
+2025-08-13 21:49:47,253 - INFO - AWS credentials validated successfully
+2025-08-13 21:49:47,255 - INFO - Starting parallel provisioning of 4 instances
+2025-08-13 21:49:47,255 - INFO - Starting provisioning for instance: ubuntu-24-04-test
+2025-08-13 21:49:47,255 - INFO - Starting provisioning for instance: ubuntu-24-04-spot
+2025-08-13 21:49:47,261 - INFO - Starting provisioning for instance: ubuntu-24-04-spot-budget
+2025-08-13 21:49:47,262 - INFO - Spot instance attempt 1/3 for ubuntu-24-04-spot
+2025-08-13 21:49:47,262 - INFO - Starting provisioning for instance: ubuntu-24-04-spot-resilient
+2025-08-13 21:49:47,262 - INFO - Spot instance attempt 1/3 for ubuntu-24-04-spot-budget
+2025-08-13 21:49:47,263 - INFO - No max price specified - AWS will use current on-demand price
+2025-08-13 21:49:47,263 - INFO - Spot instance attempt 1/5 for ubuntu-24-04-spot-resilient
+2025-08-13 21:49:47,263 - INFO - Setting spot max price to: 0.005
+2025-08-13 21:49:47,263 - INFO - Requesting spot instance for ubuntu-24-04-spot...
+2025-08-13 21:49:47,264 - INFO - No max price specified - AWS will use current on-demand price
+2025-08-13 21:49:47,264 - INFO - Requesting spot instance for ubuntu-24-04-spot-budget...
+2025-08-13 21:49:47,265 - WARNING - Spot instance attempt 1 failed for ubuntu-24-04-spot: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:49:47,265 - INFO - Requesting spot instance for ubuntu-24-04-spot-resilient...
+2025-08-13 21:49:47,265 - WARNING - Spot instance attempt 1 failed for ubuntu-24-04-spot-budget: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:49:47,266 - INFO - Waiting 30 seconds before retry...
+2025-08-13 21:49:47,266 - WARNING - Spot instance attempt 1 failed for ubuntu-24-04-spot-resilient: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:49:47,266 - INFO - Waiting 30 seconds before retry...
+2025-08-13 21:49:47,266 - INFO - Waiting 60 seconds before retry...
+2025-08-13 21:49:48,571 - INFO - Waiting for instance i-07cbe8ae28e30d150 to be running...
+2025-08-13 21:50:05,012 - INFO - Successfully provisioned on-demand instance ubuntu-24-04-test (i-07cbe8ae28e30d150)
+2025-08-13 21:50:05,014 - INFO - Instance ubuntu-24-04-test completed successfully
+2025-08-13 21:50:17,271 - INFO - Spot instance attempt 2/3 for ubuntu-24-04-spot
+2025-08-13 21:50:17,271 - INFO - Spot instance attempt 2/3 for ubuntu-24-04-spot-budget
+2025-08-13 21:50:17,273 - INFO - No max price specified - AWS will use current on-demand price
+2025-08-13 21:50:17,273 - INFO - Setting spot max price to: 0.005
+2025-08-13 21:50:17,273 - INFO - Requesting spot instance for ubuntu-24-04-spot...
+2025-08-13 21:50:17,273 - INFO - Requesting spot instance for ubuntu-24-04-spot-budget...
+2025-08-13 21:50:17,274 - WARNING - Spot instance attempt 2 failed for ubuntu-24-04-spot: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:50:17,275 - WARNING - Spot instance attempt 2 failed for ubuntu-24-04-spot-budget: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:50:17,275 - INFO - Waiting 60 seconds before retry...
+2025-08-13 21:50:17,275 - INFO - Waiting 60 seconds before retry...
+2025-08-13 21:50:47,270 - INFO - Spot instance attempt 2/5 for ubuntu-24-04-spot-resilient
+2025-08-13 21:50:47,272 - INFO - No max price specified - AWS will use current on-demand price
+2025-08-13 21:50:47,272 - INFO - Requesting spot instance for ubuntu-24-04-spot-resilient...
+2025-08-13 21:50:47,274 - WARNING - Spot instance attempt 2 failed for ubuntu-24-04-spot-resilient: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:50:47,274 - INFO - Waiting 120 seconds before retry...
+2025-08-13 21:51:17,279 - INFO - Spot instance attempt 3/3 for ubuntu-24-04-spot
+2025-08-13 21:51:17,280 - INFO - Spot instance attempt 3/3 for ubuntu-24-04-spot-budget
+2025-08-13 21:51:17,281 - INFO - No max price specified - AWS will use current on-demand price
+2025-08-13 21:51:17,281 - INFO - Setting spot max price to: 0.005
+2025-08-13 21:51:17,281 - INFO - Requesting spot instance for ubuntu-24-04-spot...
+2025-08-13 21:51:17,282 - INFO - Requesting spot instance for ubuntu-24-04-spot-budget...
+2025-08-13 21:51:17,284 - WARNING - Spot instance attempt 3 failed for ubuntu-24-04-spot: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:51:17,285 - WARNING - Spot instance attempt 3 failed for ubuntu-24-04-spot-budget: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:51:17,285 - ERROR - Failed to provision instance ubuntu-24-04-spot: All 3 spot instance attempts failed for ubuntu-24-04-spot. Last error: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:51:17,285 - ERROR - Failed to provision instance ubuntu-24-04-spot-budget: All 3 spot instance attempts failed for ubuntu-24-04-spot-budget. Last error: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:51:17,286 - ERROR - Instance ubuntu-24-04-spot failed: All 3 spot instance attempts failed for ubuntu-24-04-spot. Last error: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:51:17,286 - ERROR - Instance ubuntu-24-04-spot-budget failed: All 3 spot instance attempts failed for ubuntu-24-04-spot-budget. Last error: Parameter validation failed:
+Unknown parameter in LaunchSpecification: "TagSpecifications", must be one of: SecurityGroupIds, SecurityGroups, AddressingType, BlockDeviceMappings, EbsOptimized, IamInstanceProfile, ImageId, InstanceType, KernelId, KeyName, Monitoring, NetworkInterfaces, Placement, RamdiskId, SubnetId, UserData
+2025-08-13 21:53:35,639 - INFO - AWS credentials validated successfully
+2025-08-13 21:53:35,640 - INFO - Starting parallel provisioning of 1 instances
+2025-08-13 21:53:35,641 - INFO - Starting provisioning for instance: test-spot
+2025-08-13 21:53:35,641 - INFO - Spot instance attempt 1/3 for test-spot
+2025-08-13 21:53:35,641 - INFO - No max price specified - AWS will use current on-demand price
+2025-08-13 21:53:35,641 - INFO - Requesting spot instance for test-spot...
+2025-08-13 21:53:35,961 - WARNING - Spot instance attempt 1 failed for test-spot: An error occurred (InvalidParameterValue) when calling the RequestSpotInstances operation: Invalid BASE64 encoding of user data
+2025-08-13 21:53:35,961 - INFO - Waiting 30 seconds before retry...
+2025-08-13 21:54:18,306 - INFO - AWS credentials validated successfully
+2025-08-13 21:54:18,307 - INFO - Starting parallel provisioning of 1 instances
+2025-08-13 21:54:18,307 - INFO - Starting provisioning for instance: test-spot
+2025-08-13 21:54:18,308 - INFO - Spot instance attempt 1/3 for test-spot
+2025-08-13 21:54:18,308 - INFO - No max price specified - AWS will use current on-demand price
+2025-08-13 21:54:18,308 - INFO - Requesting spot instance for test-spot...
+2025-08-13 21:54:19,423 - INFO - Waiting for spot request sir-f1yq684m to be fulfilled...
+2025-08-13 21:54:35,204 - INFO - Waiting for spot instance i-01cbe5df10345bc7d to be running...
+2025-08-13 21:54:52,129 - INFO - Successfully provisioned spot instance test-spot (i-01cbe5df10345bc7d)
+2025-08-13 21:54:52,451 - INFO - Successfully tagged spot instance i-01cbe5df10345bc7d
+2025-08-13 21:54:52,452 - INFO - Spot instance test-spot successfully provisioned on attempt 1
+2025-08-13 21:54:52,453 - INFO - Instance test-spot completed successfully
+2025-08-13 21:54:52,453 - INFO - Provisioning completed. Successful: 1, Failed: 0
+2025-08-13 21:56:21,455 - INFO - AWS credentials validated successfully
+2025-08-13 21:56:21,456 - INFO - Starting cleanup of 1 instances
+2025-08-13 21:56:21,456 - INFO - Terminating instance: i-01cbe5df10345bc7d
+2025-08-13 22:00:28,803 - INFO - AWS credentials validated successfully
+2025-08-13 22:00:28,804 - INFO - Starting parallel provisioning of 1 instances
+2025-08-13 22:00:28,805 - INFO - Starting provisioning for instance: t3.micro-1755147628
+2025-08-13 22:00:28,805 - INFO - Spot instance attempt 1/3 for t3.micro-1755147628
+2025-08-13 22:00:28,805 - INFO - No max price specified - AWS will use current on-demand price
+2025-08-13 22:00:28,805 - INFO - Requesting spot instance for t3.micro-1755147628...
+2025-08-13 22:00:29,802 - INFO - Waiting for spot request sir-yymf6qcp to be fulfilled...
+2025-08-13 22:00:45,240 - INFO - Waiting for spot instance i-01953419c6073c348 to be running...
+2025-08-13 22:00:46,445 - INFO - Successfully provisioned spot instance t3.micro-1755147628 (i-01953419c6073c348)
+2025-08-13 22:00:46,775 - INFO - Successfully tagged spot instance i-01953419c6073c348
+2025-08-13 22:00:46,775 - INFO - Spot instance t3.micro-1755147628 successfully provisioned on attempt 1
+2025-08-13 22:00:46,776 - INFO - Instance None completed successfully
+2025-08-13 22:00:46,776 - INFO - Provisioning completed. Successful: 1, Failed: 0
+2025-08-13 22:01:05,246 - INFO - AWS credentials validated successfully
+2025-08-13 22:01:05,247 - INFO - Starting cleanup of 1 instances
+2025-08-13 22:01:05,247 - INFO - Terminating instance: i-01953419c6073c348

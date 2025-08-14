@@ -1,0 +1,9 @@
+[
+  {
+    "name": "test-spot",
+    "instance_type": "t3.micro",
+    "image_id": "ami-0ae8595e2aff47037",
+    "spot_instance": true,
+    "user_data": "#!/bin/bash\necho 'Test spot instance'"
+  }
+]

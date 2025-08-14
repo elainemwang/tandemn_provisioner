@@ -1,0 +1,12 @@
+[
+  {
+    "name": "t3.micro-1755147628",
+    "instance_id": "i-01953419c6073c348",
+    "public_ip": "18.234.189.172",
+    "private_ip": "172.31.95.148",
+    "state": "running",
+    "status": "success",
+    "instance_type": "spot",
+    "spot_request_id": "sir-yymf6qcp"
+  }
+]
