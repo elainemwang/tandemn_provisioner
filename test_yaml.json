@@ -1,0 +1,12 @@
+[
+  {
+    "instance_type": "t3.xlarge",
+    "name": "yaml-test",
+    "user_data_file": "cloud-init/development.yml",
+    "volume_size": 200,
+    "volume_type": "gp3",
+    "key_name": "elaines-test",
+    "image_id": "ami-0ae8595e2aff47037",
+    "spot_instance": true
+  }
+]

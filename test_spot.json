@@ -1,9 +1,13 @@
 [
   {
     "name": "test-spot",
-    "instance_type": "t3.micro",
-    "image_id": "ami-0ae8595e2aff47037",
-    "spot_instance": true,
-    "user_data": "#!/bin/bash\necho 'Test spot instance'"
+    "instance_type": "g4dn.xlarge",
+    "image_id": "ami-092f27e5973743f4a",
+    "spot_instance": false,
+    "user_data_file": "cloud-init/test-spot-setup.yml",
+    "key_name": "elaines-test",
+    "volume_size": 200,
+    "volume_type": "gp3"
   }
 ]
+

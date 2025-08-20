@@ -1,0 +1,44 @@
+#cloud-config
+packages:
+  - build-essential
+  - git
+  - curl
+  - wget
+  - python3
+  - python3-venv
+  - python3-pip
+  - software-properties-common
+
+apt:
+  sources:
+    graphics-drivers:
+      source: "ppa:graphics-drivers/ppa"
+
+runcmd:
+  # Update system
+  - echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting NVIDIA AMI setup"
+  - apt update
+  - apt upgrade -y
+  
+  # Check for NVIDIA GPU
+  - echo "[$(date '+%Y-%m-%d %H:%M:%S')] Checking for NVIDIA GPU"
+  - lspci | grep -i nvidia
+  
+  # Install NVIDIA driver
+  - echo "[$(date '+%Y-%m-%d %H:%M:%S')] Installing NVIDIA driver"
+  - apt install -y nvidia-driver-535
+  
+  # Clean up for AMI
+  - echo "[$(date '+%Y-%m-%d %H:%M:%S')] Cleaning up for AMI creation"
+  - apt autoremove -y
+  - apt autoclean
+  - rm -rf /tmp/*
+  - rm -rf /var/tmp/*
+  
+  - echo "[$(date '+%Y-%m-%d %H:%M:%S')] NVIDIA AMI setup completed - ready for reboot"
+
+# Reboot to load NVIDIA drivers
+power_state:
+  mode: reboot
+  message: "Rebooting to load NVIDIA drivers for AMI"
+  timeout: 30

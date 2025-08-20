@@ -1,0 +1,28 @@
+#cloud-config
+
+runcmd:
+  # Verify NVIDIA is working (should already be installed in custom AMI)
+  - echo "[$(date '+%Y-%m-%d %H:%M:%S')] Verifying NVIDIA drivers"
+  - nvidia-smi
+  
+  # Install UV package manager
+  - echo "[$(date '+%Y-%m-%d %H:%M:%S')] Installing UV"
+  - curl -LsSf https://astral.sh/uv/install.sh | sh
+  
+  # Clone and setup VLLM
+  - echo "[$(date '+%Y-%m-%d %H:%M:%S')] Cloning VLLM repository"
+  - git clone https://github.com/Tandemn-Labs/tandemn-vllm /opt/tandemn-vllm
+  
+  # Setup Python environment and start machine runner
+  - |
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Setting up Python environment"
+    cd /opt/tandemn-vllm
+    export PATH="/root/.local/bin:$PATH"
+    uv venv -p 3.12
+    . .venv/bin/activate
+    uv pip install -r requirements.peer.txt
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting machine runner"
+    nohup .venv/bin/python -m src.machine_runner > /var/log/machine_runner.log 2>&1 &
+    echo $! > /var/run/machine_runner.pid
+  
+  - echo "[$(date '+%Y-%m-%d %H:%M:%S')] Setup completed - machine runner started"

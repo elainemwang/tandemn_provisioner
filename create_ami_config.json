@@ -1,0 +1,12 @@
+[
+  {
+    "name": "nvidia-ami-builder",
+    "instance_type": "g4dn.xlarge",
+    "image_id": "ami-0ae8595e2aff47037",
+    "spot_instance": false,
+    "user_data_file": "cloud-init/nvidia-ami-setup.yml",
+    "key_name": "elaines-test",
+    "volume_size": 20,
+    "volume_type": "gp3"
+  }
+]

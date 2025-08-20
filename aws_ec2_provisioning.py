@@ -12,6 +12,7 @@ import logging
 import time
 import os
 import base64
+import yaml  # Add YAML support
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Any, Optional
 from dataclasses import dataclass
@@ -29,6 +30,7 @@ class EC2InstanceConfig:
     security_group_ids: Optional[List[str]] = None
     subnet_id: Optional[str] = None
     user_data: Optional[str] = None
+    user_data_file: Optional[str] = None  # NEW: YAML file path
     tags: Optional[Dict[str, str]] = None
     volume_size: int = 8
     volume_type: str = 'gp3'
@@ -428,6 +430,22 @@ class EC2Provisioner:
 
 
 
+def load_user_data_from_yaml(yaml_file_path: str) -> str:
+    """Load and convert YAML cloud-init file to string."""
+    try:
+        with open(yaml_file_path, 'r') as f:
+            yaml_content = f.read()
+        
+        # Validate YAML syntax
+        yaml.safe_load(yaml_content)
+        
+        return yaml_content
+    except FileNotFoundError:
+        raise Exception(f"Cloud-init YAML file not found: {yaml_file_path}")
+    except yaml.YAMLError as e:
+        raise Exception(f"Invalid YAML syntax in {yaml_file_path}: {e}")
+
+
 def load_config_from_file(config_file: str) -> List[EC2InstanceConfig]:
     """Load EC2 instance configurations from a JSON file."""
     try:
@@ -436,6 +454,13 @@ def load_config_from_file(config_file: str) -> List[EC2InstanceConfig]:
         
         configs = []
         for item in config_data:
+            # Handle user_data vs user_data_file
+            user_data = None
+            if item.get('user_data_file'):
+                user_data = load_user_data_from_yaml(item['user_data_file'])
+            elif item.get('user_data'):
+                user_data = item['user_data']
+            
             config = EC2InstanceConfig(
                 instance_type=item['instance_type'],
                 name=item.get('name'),
@@ -443,12 +468,13 @@ def load_config_from_file(config_file: str) -> List[EC2InstanceConfig]:
                 key_name=item.get('key_name'),
                 security_group_ids=item.get('security_group_ids'),
                 subnet_id=item.get('subnet_id'),
-                user_data=item.get('user_data'),
+                user_data=user_data,  # Use processed user_data
+                user_data_file=item.get('user_data_file'),
                 tags=item.get('tags'),
                 volume_size=item.get('volume_size', 8),
                 volume_type=item.get('volume_type', 'gp3'),
                 iam_instance_profile=item.get('iam_instance_profile'),
-                spot_instance=item.get('spot_instance', True),  # Default to spot
+                spot_instance=item.get('spot_instance', True),
                 spot_max_price=item.get('spot_max_price'),
                 spot_max_retries=item.get('spot_max_retries', 3),
                 spot_retry_delay=item.get('spot_retry_delay', 30)
@@ -464,15 +490,19 @@ def create_sample_config():
     """Create a sample configuration file."""
     sample_config = [
         {
-            "instance_type": "t3.micro"
+            "instance_type": "t3.micro",
+            "user_data_file": "cloud-init/development.yml"
         },
         {
             "instance_type": "t3.small",
-            "name": "custom-name"
+            "name": "docker-host",
+            "user_data_file": "cloud-init/docker-host.yml"
         },
         {
-            "instance_type": "t3.medium",
-            "spot_instance": False  # Override to on-demand
+            "instance_type": "g4dn.xlarge",
+            "name": "gpu-ml-server",
+            "user_data_file": "cloud-init/gpu-ml-server.yml",
+            "spot_max_price": "0.50"
         }
     ]
     
@@ -480,6 +510,7 @@ def create_sample_config():
         json.dump(sample_config, f, indent=2)
     
     print("Sample configuration file 'sample_config.json' created")
+    print("Make sure the cloud-init YAML files exist in the 'cloud-init/' directory")
 
 
 def main():

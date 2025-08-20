@@ -1,0 +1,19 @@
+#cloud-config
+packages:
+  - git
+  - curl
+  - wget
+  - vim
+  - htop
+  - python3
+  - python3-pip
+  - build-essential
+
+users:
+  - name: developer
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+
+runcmd:
+  - pip3 install awscli
+  - echo "Development server ready!" > /home/developer/welcome.txt

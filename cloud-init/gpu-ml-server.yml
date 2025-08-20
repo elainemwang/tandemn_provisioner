@@ -1,0 +1,38 @@
+#cloud-config
+packages:
+  - build-essential
+  - git
+  - curl
+  - wget
+  - python3
+  - python3-venv
+  - python3-pip
+  - software-properties-common
+
+write_files:
+  - path: /root/post_reboot.sh
+    permissions: '0755'
+    content: |
+      #!/bin/bash
+      sleep 30
+      apt install -y python3 python3-venv python3-pip git curl
+      curl -LsSf https://astral.sh/uv/install.sh | sh
+      git clone https://github.com/Tandemn-Labs/tandemn-vllm /opt/tandemn-vllm
+      cd /opt/tandemn-vllm
+      uv venv
+      source .venv/bin/activate
+      uv pip install -r requirements.txt
+
+runcmd:
+  - apt update && apt upgrade -y
+  - lspci | grep -i nvidia
+  - add-apt-repository ppa:graphics-drivers/ppa -y
+  - apt update
+  - apt install -y nvidia-driver-535
+  - (crontab -l 2>/dev/null; echo "@reboot /root/post_reboot.sh && rm -f /root/post_reboot.sh") | crontab -
+  - reboot
+
+power_state:
+  delay: "+1"
+  mode: reboot
+  message: "Rebooting to complete NVIDIA driver installation"
