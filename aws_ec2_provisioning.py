@@ -12,6 +12,7 @@ import logging
 import time
 import os
 import base64
+
 import yaml  # Add YAML support
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Any, Optional
@@ -147,7 +148,7 @@ class EC2Provisioner:
                 launch_params['SubnetId'] = config.subnet_id
             
             if config.user_data:
-                # Encode user data as base64 for spot instances
+                # boto3 requires UserData to be base64 encoded manually
                 launch_params['UserData'] = base64.b64encode(config.user_data.encode('utf-8')).decode('utf-8')
             
             if config.iam_instance_profile:
@@ -430,20 +431,39 @@ class EC2Provisioner:
 
 
 
-def load_user_data_from_yaml(yaml_file_path: str) -> str:
-    """Load and convert YAML cloud-init file to string."""
+def load_user_data_from_file(file_path: str, params: dict = None) -> str:
+    """Load and convert cloud-init file (YAML or bash) to string with parameter substitution."""
     try:
-        with open(yaml_file_path, 'r') as f:
-            yaml_content = f.read()
+        with open(file_path, 'r') as f:
+            content = f.read()
         
-        # Validate YAML syntax
-        yaml.safe_load(yaml_content)
+        # Check if there's a corresponding .env file to include
+        env_file_path = os.path.join(os.path.dirname(file_path), '.env')
+        env_content = ""
+        if os.path.exists(env_file_path):
+            with open(env_file_path, 'r') as f:
+                env_content = f.read()
+            # Apply parameter substitution to env content
+            if params:
+                for key, value in params.items():
+                    placeholder = f"${{{key}}}"
+                    env_content = env_content.replace(placeholder, str(value))
         
-        return yaml_content
+        # Apply parameter substitution to content
+        if params:
+            for key, value in params.items():
+                placeholder = f"${{{key}}}"
+                content = content.replace(placeholder, str(value))
+        
+        # Replace env_content placeholder if it exists
+        if env_content:
+            content = content.replace("${env_content}", env_content)
+        
+        return content
     except FileNotFoundError:
-        raise Exception(f"Cloud-init YAML file not found: {yaml_file_path}")
-    except yaml.YAMLError as e:
-        raise Exception(f"Invalid YAML syntax in {yaml_file_path}: {e}")
+        raise Exception(f"Cloud-init file not found: {file_path}")
+    except Exception as e:
+        raise Exception(f"Error processing file {file_path}: {e}")
 
 
 def load_config_from_file(config_file: str) -> List[EC2InstanceConfig]:
@@ -457,7 +477,16 @@ def load_config_from_file(config_file: str) -> List[EC2InstanceConfig]:
             # Handle user_data vs user_data_file
             user_data = None
             if item.get('user_data_file'):
-                user_data = load_user_data_from_yaml(item['user_data_file'])
+                # Extract parameters for YAML substitution
+                params = {}
+                for key, value in item.items():
+                    if key not in ['instance_type', 'name', 'image_id', 'key_name', 'security_group_ids', 
+                                 'subnet_id', 'user_data', 'user_data_file', 'tags', 'volume_size', 
+                                 'volume_type', 'iam_instance_profile', 'spot_instance', 'spot_max_price',
+                                 'spot_max_retries', 'spot_retry_delay']:
+                        params[key] = value
+                
+                user_data = load_user_data_from_file(item['user_data_file'], params)
             elif item.get('user_data'):
                 user_data = item['user_data']
             
@@ -506,10 +535,13 @@ def create_sample_config():
         }
     ]
     
-    with open('sample_config.json', 'w') as f:
+    # Ensure configs directory exists
+    os.makedirs('configs', exist_ok=True)
+    
+    with open('configs/sample_config.json', 'w') as f:
         json.dump(sample_config, f, indent=2)
     
-    print("Sample configuration file 'sample_config.json' created")
+    print("Sample configuration file 'configs/sample_config.json' created")
     print("Make sure the cloud-init YAML files exist in the 'cloud-init/' directory")
 
 

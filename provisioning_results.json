@@ -1,9 +1,9 @@
 [
   {
-    "name": "test-spot",
-    "instance_id": "i-0556c8865e206570e",
-    "public_ip": "3.238.247.34",
-    "private_ip": "172.31.76.162",
+    "name": "test-secrets",
+    "instance_id": "i-0d32ee0fad9b51c48",
+    "public_ip": "3.236.20.35",
+    "private_ip": "172.31.79.254",
     "state": "running",
     "status": "success",
     "instance_type": "on-demand"

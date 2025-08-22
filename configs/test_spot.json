@@ -1,0 +1,58 @@
+[
+  {
+    "name": "test-spot0",
+    "instance_type": "g6e.xlarge",
+    "image_id": "ami-092f27e5973743f4a",
+    "spot_instance": true,
+    "user_data_file": "cloud-init/test-spot-setup.sh",
+    "server_host": "44.197.232.9",
+    "key_name": "elaines-test",
+    "volume_size": 200,
+    "volume_type": "gp3"
+  },
+  {
+    "name": "test-spot1",
+    "instance_type": "g6e.xlarge",
+    "image_id": "ami-092f27e5973743f4a",
+    "spot_instance": true,
+    "user_data_file": "cloud-init/test-spot-setup.sh",
+    "server_host": "44.197.232.9",
+    "key_name": "elaines-test",
+    "volume_size": 200,
+    "volume_type": "gp3"
+  },
+  {
+    "name": "test-spot2",
+    "instance_type": "g6e.xlarge",
+    "image_id": "ami-092f27e5973743f4a",
+    "spot_instance": true,
+    "user_data_file": "cloud-init/test-spot-setup.sh",
+    "server_host": "44.197.232.9",
+    "key_name": "elaines-test",
+    "volume_size": 200,
+    "volume_type": "gp3"
+  },
+  {
+    "name": "test-spot3",
+    "instance_type": "g6e.xlarge",
+    "image_id": "ami-092f27e5973743f4a",
+    "spot_instance": true,
+    "user_data_file": "cloud-init/test-spot-setup.sh",
+    "server_host": "44.197.232.9",
+    "key_name": "elaines-test",
+    "volume_size": 200,
+    "volume_type": "gp3"
+  },
+  {
+    "name": "test-spot4",
+    "instance_type": "g6e.xlarge",
+    "image_id": "ami-092f27e5973743f4a",
+    "spot_instance": true,
+    "user_data_file": "cloud-init/test-spot-setup.sh",
+    "server_host": "44.197.232.9",
+    "key_name": "elaines-test",
+    "volume_size": 200,
+    "volume_type": "gp3"
+  }
+]
+

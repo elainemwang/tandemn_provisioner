@@ -55,13 +55,13 @@ pip install -r requirements.txt
 
 ### Creating a Configuration File
 
-The script uses JSON configuration files to define EC2 instances. You can create a sample configuration file:
+The script uses JSON configuration files to define EC2 instances. Configuration files are stored in the `configs/` directory. You can create a sample configuration file:
 
 ```bash
 python aws_ec2_provisioning.py --sample
 ```
 
-This will create `sample_config.json` with example configurations.
+This will create `configs/sample_config.json` with example configurations.
 
 ### Configuration Format
 
